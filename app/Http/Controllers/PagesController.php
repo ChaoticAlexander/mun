@@ -9,7 +9,7 @@ class PagesController extends Controller
     public function index(){
         return view('public.index');
     }
-    public function index($id){
+    public function play($id){
         return view('public.play')->with('id',$id);
     }
 }
