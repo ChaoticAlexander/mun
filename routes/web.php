@@ -15,3 +15,4 @@
 //     return view('welcome');
 // });
 Route::get('/', 'PagesController@index');
+Route::get('/playground/{id}', 'PagesController@play');
