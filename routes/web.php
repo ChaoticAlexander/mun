@@ -11,5 +11,7 @@
 |
 */
 
-Route::get('/', 'PagesController@index');
-Route::get('/playground/{id}', 'PagesController@play');
+
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/playground/', 'PagesController@play');
+Auth::routes();
