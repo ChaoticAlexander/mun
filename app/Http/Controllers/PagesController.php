@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     public function index(){
-        return view('public.index');
+        return view('public.pages.index');
     }
-    public function play($id){
-        return view('public.play')->with('id',$id);
+    public function play(){
+        // return view('public.play')->with('id',$id);
     }
 }
