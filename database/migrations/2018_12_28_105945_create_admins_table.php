@@ -22,6 +22,9 @@ class CreateAdminsTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        DB::table('admins')->insert(
+            Array("name"=>"admin","email"=>"atan@dynacomp.gr","password"=>Hash::make('Dcm-1269!'))
+        );
     }
 
     /**
