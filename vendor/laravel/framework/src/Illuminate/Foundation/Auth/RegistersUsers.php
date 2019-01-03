@@ -2,6 +2,7 @@
 
 namespace Illuminate\Foundation\Auth;
 
+use \App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
@@ -17,7 +18,8 @@ trait RegistersUsers
      */
     public function showRegistrationForm()
     {
-        return view('public.auth.register');
+        $types = Role::all();
+        return view('public.auth.register')->with('types',$types);
     }
 
     /**

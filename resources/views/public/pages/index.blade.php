@@ -1,1 +1,5 @@
-INDEX PAGERINO
+@extends('public.layouts.app')
+
+@section('content')
+Index
+@endSection

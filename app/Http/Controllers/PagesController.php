@@ -10,6 +10,7 @@ class PagesController extends Controller
         return view('public.pages.index');
     }
     public function play(){
-        // return view('public.play')->with('id',$id);
+        $role = \App\Role::find(3);
+        return $role->users()->get();
     }
 }
