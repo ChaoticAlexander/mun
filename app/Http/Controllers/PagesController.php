@@ -6,11 +6,15 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
+    public function __construct(){
+        // $this->middleware('auth');
+    }
+
     public function index(){
         return view('public.pages.index');
     }
     public function play(){
-        $role = \App\Role::find(3);
-        return $role->users()->get();
+        $admin = \App\Admin::find(1);
+        echo $admin->is_super() ? 'yes' : 'no';
     }
 }

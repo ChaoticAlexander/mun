@@ -19,11 +19,12 @@ class CreateAdminsTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('super');
             $table->rememberToken();
             $table->timestamps();
         });
         DB::table('admins')->insert(
-            Array("name"=>"admin","email"=>"atan@dynacomp.gr","password"=>Hash::make('Dcm-1269!'))
+            Array("name"=>"admin","email"=>"atan@dynacomp.gr","password"=>Hash::make('Dcm-1269!'), "super"=>1)
         );
     }
 

@@ -11,9 +11,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Link</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
+            @if(Auth::check() && Auth::user()->super)
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('admin.register')}}">Register</a>
+                </li>
+            @endif
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="https://example.com" id="NavDrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
                 <div class="dropdown-menu" aria-labelledby="NavDrop">
@@ -23,8 +25,28 @@
                 </div>
             </li>
         </ul>
+        
         <form class="form-inline my-2 my-md-0">
             <input class="form-control" type="text" placeholder="Search">
         </form>
+        @if(auth::guard('admin')->check())
+        <ul class="navbar-nav ml-5">
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="btn btn-light dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ Auth::guard('admin')->user()->name }} <span class="caret"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
+            </li>
+        </ul>
+        @endif
     </div>
 </nav>

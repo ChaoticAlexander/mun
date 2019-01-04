@@ -16,4 +16,11 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/playground', 'PagesController@play');
 Auth::routes();
 
-Route::get('/administrator','AdminController@index');
+Route::get('admin/login','Auth\AdminAuth@showLoginForm');
+Route::post('admin/login','Auth\AdminAuth@login')->name('admin.login');
+
+Route::prefix('admin')->middleware('auth:admin')->group(function(){
+    Route::get('/','AdminController@index')->name('admin.home');
+    Route::get('/register','AdminController@showRegisterForm')->name('admin.register');
+    Route::post('/register','AdminController@register')->name('admin.register.submit');
+});
